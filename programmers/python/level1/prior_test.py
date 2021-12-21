@@ -11,7 +11,7 @@ def solution(answers):
     for student in students:
         score = 0
         for index, answer in enumerate(answers):
-            if answer == student[index % len(student)]:
+            if answer == student[index % len(student)]:  # 다음엔 사이클 써볼것
                 score += 1
         scores.append(score)
 
