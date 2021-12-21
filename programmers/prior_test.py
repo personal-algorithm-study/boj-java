@@ -22,4 +22,13 @@ def solution(answers):
         result.append(student_index + 1)
         scores[student_index] = -1
 
+    # list_comprehension
+    '''
+    result = [index+1 for index,
+              value in enumerate(scores) if value == best_score]
+    '''
+
     return result
+
+
+print(solution([1, 2, 3, 4, 5]))
