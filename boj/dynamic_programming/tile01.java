@@ -15,10 +15,10 @@ public class Main {
         dp[2] = 2;
 
         for (int i = 3; i < n + 1; i++) {
-            dp[i] = dp[i - 1] + dp[i - 2]; // 오버플로우 지점
+            dp[i] = (dp[i - 1] + dp[i - 2]) % 15746;
         }
 
-        sb.append(dp[n] % 15746).append('\n');
+        sb.append(dp[n]).append('\n');
         return;
     }
 
