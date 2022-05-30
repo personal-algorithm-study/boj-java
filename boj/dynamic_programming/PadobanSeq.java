@@ -1,9 +1,9 @@
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.util.Arrays;
+
 import java.io.IOException;
 
-public class Main {
+public class PadobanSeq {
     static long[] dp = new long[101];
     static StringBuilder sb = new StringBuilder();
 

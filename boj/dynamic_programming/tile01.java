@@ -2,7 +2,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 
-public class Main {
+public class Tile01 {
     static int[] dp;
     static StringBuilder sb = new StringBuilder();
 
