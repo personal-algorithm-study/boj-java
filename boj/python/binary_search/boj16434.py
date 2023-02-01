@@ -1,32 +1,30 @@
+import math
 import sys
 
 
 def solution():
-    start, end = 1, 10 ** 12
+    start, end = 1, 10 ** 18
+    answer = 0
     while start <= end:
         mid = (start + end) // 2
         now = mid
         ai = A
-        is_possible = True
-        print(start, end)
         for t, a, h in arr:
-            # a 몬스터 공격력, h 생명력
             if t == 1:
-                turn = h // ai if h % ai == 0 else h // ai + 1  # math.floor(h / ai)
+                turn = math.ceil(h / ai)
                 now -= a * (turn - 1)
-                if now < 0:
-                    is_possible = False
+                if now <= 0:
                     break
-            # a 공격력 증가, h 생명력 증가
             else:
                 now = min(now + h, mid)
                 ai += a
 
-        if is_possible:
+        if now > 0:
             end = mid - 1
+            answer = mid
         else:
             start = mid + 1
-    return start
+    return answer
 
 
 if __name__ == "__main__":
