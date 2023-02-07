@@ -7,20 +7,20 @@ def solution():
     answer = 0
     for e in arr:
         index = q.index(e)
-        if index <= len(q) - index - 1:
+        if index <= len(q) - index:
             for _ in range(index):
                 q.append(q.popleft())
                 answer += 1
             q.popleft()
         else:
-            for _ in range(len(q) - index - 1):
+            for _ in range(len(q) - index):
                 q.appendleft(q.pop())
                 answer += 1
-            q.pop()
+            q.popleft()
     return answer
 
 
 if __name__ == "__main__":
-    N, M = map(int, input().rstrip().split(" "))
+    N, M = map(int, input().split(" "))
     arr = list(map(int, input().rstrip().split(" ")))
     print(solution())
