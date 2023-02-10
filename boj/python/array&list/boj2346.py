@@ -1,32 +1,22 @@
+import collections
 import sys
 
 
 def solution():
-    now = 0
     answer = []
-    is_completed = 0
-    while is_completed != n:
-        if flags[now]:
-            now = (now + 1) % n
+    while q:
+        idx, _next = q.popleft()
+        answer.append(idx + 1)
+        idx += _next
+        if _next > 0:
+            q.rotate(-(idx - 1))
         else:
-            is_completed += 1
-            answer.append(now + 1)
-            now = (now + arr[now]) % len(arr)
-            if now < 0:
-                now += n
+            q.rotate(-idx)
     return answer
 
 
 if __name__ == "__main__":
     input = sys.stdin.readline
     n = int(input())
-    arr = list(map(int, input().rstrip().split(" ")))
-    flags = [0 for _ in range(n)]
-    print(solution())
-
-'''
-
-
-
-
-'''
+    q = collections.deque(enumerate(map(int, input().rstrip().split(" "))))
+    print(*solution())
