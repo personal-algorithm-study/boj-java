@@ -1,28 +1,27 @@
-import collections
 import sys
 
 
 def solution():
-    cursor = len(q)
     for c in cmds:
-        if len(c) == 2:
-            q.insert(cursor, c[1])
-            cursor = min(len(q), cursor + 1)
+        if c[0] == "L":
+            if st1:
+                st2.append(st1.pop())
+        elif c[0] == "D":
+            if st2:
+                st1.append(st2.pop())
+        elif c[0] == "B":
+            if st1:
+                st1.pop()
         else:
-            if c[0] == "L":
-                cursor = max(0, cursor - 1)
-            elif c[0] == "D":
-                cursor = min(len(q), cursor + 1)
-            else:
-                if cursor - 1 >= 0:
-                    del q[cursor - 1]
-                    cursor = max(0, cursor - 1)
-    return ''.join(q)
+            st1.append(c[1])
+    st1.extend(reversed(st2))
+    return ''.join(st1)
 
 
 if __name__ == "__main__":
     input = sys.stdin.readline
-    q = collections.deque(input().rstrip())
+    st1 = list(input().rstrip())
+    st2 = []
     m = int(input())
     cmds = [list(input().rstrip().split(" ")) for _ in range(m)]
     print(solution())
