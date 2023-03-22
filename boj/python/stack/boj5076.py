@@ -4,31 +4,27 @@ import sys
 def solution(l):
     stack = []
     word = ""
+    is_tag = False
 
-    for i in l:
-        if i == "<":
-            word += i
-        elif i == ">":
-            if len(word) == 0 or word[0] != "<":
-                return "illegal"
-            elif word[-1] != "/":
-                index = word.find(" ")
-                if index == -1:
-                    stack.append(word[1:])
-                else:
-                    stack.append(word[1:index])
-
-                if stack and stack[-1][0] == "/":
-                    now = stack.pop()
-                    if stack and now[1:] != stack.pop():
-                        return "illegal"
+    for i in range(len(l)):
+        if l[i] == "<":
+            is_tag = True
+        elif l[i] == ">":
+            is_tag = False
+            if len(word) > 0 and word[-1] == "/":
+                word = ""
+                continue
+            elif stack and stack[-1] == word[1:]:
+                stack.pop()
+            else:
+                stack.append(word)
             word = ""
-        else:
-            if len(word) > 0 and word[0] == "<":
-                word += i
 
-    if word:
-        return "illegal"
+        if is_tag and l[i] == " " and l[i + 1] != "/":
+            is_tag = False
+
+        if is_tag and l[i] != "<":
+            word += l[i]
 
     return "legal" if len(stack) == 0 else "illegal"
 
