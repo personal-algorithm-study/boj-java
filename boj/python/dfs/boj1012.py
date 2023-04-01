@@ -1,5 +1,6 @@
 import sys
 
+sys.setrecursionlimit(10000)
 dr = [0, 1, 0, -1]
 dc = [1, 0, -1, 0]
 
@@ -20,12 +21,8 @@ def solution(field):
         for j in range(m):
             if field[i][j] == 1:
                 answer += 1
+                field[i][j] = 0
                 dfs(i, j)
-
-    for k in range(n):
-        print(*field[k])
-    print()
-
     return answer
 
 
@@ -36,5 +33,5 @@ if __name__ == "__main__":
         _map = [[0] * m for _ in range(n)]
         for a in range(k):
             x, y = list(map(int, input().rstrip().split(" ")))
-        _map[x][y] = 1
+            _map[x][y] = 1
         print(solution(_map))
