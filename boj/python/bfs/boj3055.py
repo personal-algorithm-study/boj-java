@@ -13,14 +13,7 @@ def solution(lengths, start, water, graph):
         q.append(start)
 
     while q:
-        x, y = q.popleft()
-
-        # for i in range(r):
-        #     print(*distance[i])
-        # print()
-        # for i in range(r):
-        #     print(*graph[i])
-        # print()
+        x, y, _type = q.popleft()
 
         for i in range(4):
             nx = x + dx[i]
@@ -30,15 +23,15 @@ def solution(lengths, start, water, graph):
             elif graph[nx][ny] == "X" or graph[nx][ny] == "*":
                 continue
 
-            if graph[x][y] == "*" and (x, y) != start:
+            if _type == 1:
                 if graph[nx][ny] == "D": continue
                 graph[nx][ny] = "*"
-                q.append((nx, ny))
+                q.append((nx, ny, 1))
             else:
                 if distance[nx][ny] != 0: continue
                 distance[nx][ny] = distance[x][y] + 1
-                q.append((nx, ny))
-                if (nx, ny) == "D":
+                q.append((nx, ny, 0))
+                if graph[nx][ny] == "D":
                     return distance[nx][ny]
     return "KAKTUS"
 
@@ -51,9 +44,9 @@ def initialize():
     for i in range(lengths[0]):
         for j in range(lengths[1]):
             if arr[i][j] == "S":
-                start = (i, j)
+                start = (i, j, 0)
             elif arr[i][j] == "*":
-                water.append((i, j))
+                water.append((i, j, 1))
     return lengths, start, water, arr
 
 
