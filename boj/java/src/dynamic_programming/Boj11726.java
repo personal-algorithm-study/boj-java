@@ -4,7 +4,7 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.io.IOException;
 
-public class Main {
+public class Boj11726 {
     static StringBuilder sb = new StringBuilder();
 
     public static void solution(int n) {
@@ -30,9 +30,6 @@ public class Main {
         int n = Integer.parseInt(br.readLine());
 
         solution(n);
-
         System.out.println(sb.toString());
-
-        return;
     }
 }
