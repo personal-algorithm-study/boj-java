@@ -27,8 +27,10 @@ public class Boj7511 {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 
 		int t = Integer.parseInt(br.readLine());
+		StringBuilder sb = new StringBuilder();
+
 		for (int i = 0; i < t; i++) {
-			System.out.println("Scenario " + (i + 1) + ":");
+			sb.append("Scenario ").append((i + 1)).append(":\n");
 
 			int n = Integer.parseInt(br.readLine());
 			int k = Integer.parseInt(br.readLine());
@@ -48,14 +50,14 @@ public class Boj7511 {
 			for (int j = 0; j < m; j++) {
 				inputs = br.readLine().split(" ");
 				if (find(parent, Integer.parseInt(inputs[0])) == find(parent, Integer.parseInt(inputs[1]))) {
-					System.out.println(1);
+					sb.append("1\n");
 				} else {
-					System.out.println(0);
+					sb.append("0\n");
 				}
 			}
-			System.out.println();
+			sb.append("\n");
 		}
-
+		System.out.println(sb);
 		br.close();
 	}
 }
