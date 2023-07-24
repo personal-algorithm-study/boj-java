@@ -3,7 +3,6 @@ package union_find;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Arrays;
 
 public class Boj7511 {
 	static int find(int[] parent, int a) {
@@ -39,23 +38,19 @@ public class Boj7511 {
 				parent[j] = j;
 			}
 
-			int[] inputs;
+			String[] inputs;
 			for (int j = 0; j < k; j++) {
-				inputs = Arrays.stream(br.readLine().split(" "))
-						.mapToInt(Integer::parseInt)
-						.toArray();
-				union(parent, inputs[0], inputs[1]);
+				inputs = br.readLine().split(" ");
+				union(parent, Integer.parseInt(inputs[0]), Integer.parseInt(inputs[1]));
 			}
 
 			int m = Integer.parseInt(br.readLine());
 			for (int j = 0; j < m; j++) {
-				inputs = Arrays.stream(br.readLine().split(" "))
-						.mapToInt(Integer::parseInt)
-						.toArray();
-				if (find(parent, inputs[0]) == find(parent, inputs[1])) {
-					System.out.println("1");
+				inputs = br.readLine().split(" ");
+				if (find(parent, Integer.parseInt(inputs[0])) == find(parent, Integer.parseInt(inputs[1]))) {
+					System.out.println(1);
 				} else {
-					System.out.println("0");
+					System.out.println(0);
 				}
 			}
 		}
