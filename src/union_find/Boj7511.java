@@ -53,6 +53,7 @@ public class Boj7511 {
 					System.out.println(0);
 				}
 			}
+			System.out.println();
 		}
 
 		br.close();
