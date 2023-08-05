@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 
+// (실버 4) boj 1244 - 스위치 켜고 끄기
 public class Boj1244 {
 	static int n;
 	static int m;
