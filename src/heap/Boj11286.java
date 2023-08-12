@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.PriorityQueue;
 
+// (실버 1) boj 11286 절대값 힙
 public class Boj11286 {
 	public static void main(String[] args) throws NumberFormatException, IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -13,12 +14,7 @@ public class Boj11286 {
 		PriorityQueue<Integer> pq = new PriorityQueue<>((i1, i2) -> {
 			int absI1 = Math.abs(i1);
 			int absI2 = Math.abs(i2);
-
-			if (absI1 != absI2) {
-				return absI1 - absI2;
-			} else {
-				return i1 - i2;
-			}
+			return absI1 != absI2 ? absI1 - absI2 : i1 - i2;
 		});
 
 		int n = Integer.parseInt(br.readLine());
