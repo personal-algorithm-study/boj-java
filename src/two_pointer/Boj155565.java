@@ -24,22 +24,15 @@ public class Boj155565 {
 
 		int ans = Integer.MAX_VALUE;
 		int left = 0, right = 0;
-		while (right < n) {
-			if (oneCnt < k) {
-				if (arr[right++] == 1)
-					oneCnt++;
-			} else {
-				if (oneCnt == k)
-					ans = Math.min(ans, right - left);
-				if (arr[left++] == 1)
-					oneCnt--;
-			}
-		}
 
-		while (oneCnt == k) {
-			ans = Math.min(ans, right - left);
-			if (arr[left++] == 1)
-				oneCnt--;
+		while(right < n) {
+			if (oneCnt < k) {
+				oneCnt = arr[right++] == 1 ? oneCnt + 1 : oneCnt;
+			}
+			while (oneCnt >= k) {
+				ans = Math.min(ans, right - left);
+				oneCnt = arr[left++] == 1 ? oneCnt - 1 : oneCnt;
+			}
 		}
 
 		System.out.println(ans == Integer.MAX_VALUE ? -1 : ans);
