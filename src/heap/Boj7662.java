@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 import java.util.TreeMap;
 
-// (?) boj 7662 이중 우선 순위 큐
+// (골드4) boj 7662 이중 우선 순위 큐 - 성공
 public class Boj7662 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -49,16 +49,15 @@ public class Boj7662 {
 						map.put(now, cnt - 1);
 					}
 				}
-				System.out.println(map);
 			}
 
-			// System.out.println();
 			if(map.isEmpty()) {
 				sb.append("EMPTY");
 			} else {
 				sb.append(map.lastKey()).append(' ').append(map.firstKey());
 			}
 			sb.append('\n');
+			map.clear(); // map을 초기화 해주지 않아 오답이었음
 		}
 
 		System.out.println(sb);
