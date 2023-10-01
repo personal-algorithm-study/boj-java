@@ -1,3 +1,5 @@
+package dfs;
+
 import static java.lang.Integer.*;
 
 import java.io.BufferedReader;
@@ -7,7 +9,7 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 import java.util.StringTokenizer;
 
-// (골드5) boj 9205 맥주 매시면서 걸어가기 - 실패
+// (골드5) boj 9205 맥주 매시면서 걸어가기 - 성공
 public class Boj9205 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
@@ -31,17 +33,20 @@ public class Boj9205 {
 				positions[i] = new Position(x, y);
 			}
 			visited[0] = true;
-			q.offer(new Position(positions[0].x, positions[1].y));
+			q.offer(new Position(positions[0].x, positions[0].y));
 
 			while (!q.isEmpty()) {
 				Position now = q.poll();
 
-				for (int i = 0; i < N + 1; i++) {
-					if (visited[i] || now.calculateDistance(positions[i]) > 1000) continue;
+				for (int i = 0; i < N + 2; i++) {
+					if (visited[i] || now.calculateDistance(positions[i]) > 1000)
+						continue;
 					visited[i] = true;
 					q.offer(new Position(positions[i].x, positions[i].y));
 				}
 			}
+			sb.append(visited[N + 1] ? "happy" : "sad");
+			sb.append('\n');
 		}
 
 		System.out.println(sb);
@@ -61,13 +66,3 @@ public class Boj9205 {
 		}
 	}
 }
-
-
-/*
-
- - 한 박스 맥주 20명 이하
- - 50미터에 한 병씩
- - 편의점 0 ~ 100
- - 편의점에서 맥주 충전 가능
-
- */
