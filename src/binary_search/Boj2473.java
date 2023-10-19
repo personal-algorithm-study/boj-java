@@ -1,16 +1,20 @@
+package binary_search;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-// (골드3) boj 2373 세 용액 - 실패
+// (골드3) boj 2373 세 용액 - 성공
+// 투 포인터, 이분 탐색
 public class Boj2473 {
 	public static void main(String[] args) throws IOException {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		StringTokenizer st;
 
 		int N = Integer.parseInt(br.readLine());
+		// long[] arr = new long[N];
 		int[] arr = new int[N];
 
 		st = new StringTokenizer(br.readLine());
@@ -20,14 +24,14 @@ public class Boj2473 {
 
 		Arrays.sort(arr);
 		long[] answer = new long[4];
-		answer[0] = Integer.MAX_VALUE;
+		answer[0] = Long.MAX_VALUE;
 
 		for (int l = 0; l < N - 2; l++) {
 			for (int m = l + 1; m < N - 1; m++) {
 				int s = m + 1, e = N - 1;
 				while (s <= e && s >= m + 1 && e <= N - 1) {
 					int r = s + (e - s) / 2;
-					long now = arr[l] + arr[m] + arr[r];
+					long now = (long) arr[l] + arr[m] + arr[r];
 
 					if (now < 0) s = r + 1;
 					else e = r - 1;
