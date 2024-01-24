@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.util.StringTokenizer;
 
-// (골드3) boj7579 앱 - 성공
+// (골드3) boj7579 앱 - 실패
 // 냅색 문제, 다이나믹 프로그래밍
 public class Boj7579 {
 	public static void main(String[] args) throws IOException {
